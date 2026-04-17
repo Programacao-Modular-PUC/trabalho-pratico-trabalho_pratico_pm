@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservas — Hospedagem Maraú</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="page-wrapper">
+
+  <div class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo-mark">Hospedagem<br/>Maraú</div>
+      <div class="logo-sub">Gestão de Hospedagem</div>
+    </div>
+    <ul class="sidebar-nav">
+      <li><a href="index.html">                    <span class="icon">🏠</span> Dashboard</a></li>
+      <li><a href="residencias.html">              <span class="icon">🏡</span> Residências</a></li>
+      <li><a href="clientes.html">                 <span class="icon">👥</span> Clientes</a></li>
+      <li><a href="reservas.html" class="active">  <span class="icon">📅</span> Reservas</a></li>
+      <li><a href="alugel.html">                   <span class="icon">🔑</span> Aluguéis</a></li>
+      <li><a href="cadastro.html">                 <span class="icon">➕</span> Novo Cadastro</a></li>
+    </ul>
+    <div class="sidebar-footer">PUC Minas · Prog. Modular</div>
+  </div>
+
+  <div class="main-content">
+    <div class="topbar">
+      <span class="topbar-title">Reservas</span>
+      <div class="topbar-user">
+        <span>Admin</span>
+        <div class="avatar">A</div>
+      </div>
+    </div>
+
+    <div class="page-body">
+
+      <div class="page-header">
+        <h1>Reservas</h1>
+        <p>Visualize e gerencie reservas futuras e em andamento</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">📅 Nova Reserva</h2>
+        </div>
+
+        <div class="info-box">
+          As diárias sempre iniciam às 12h. Entrada após 12h conta como diária completa. Saída após 12h adiciona nova diária.
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="cliente-res">Cliente</label>
+            <select id="cliente-res">
+              <option value="">Selecione um cliente...</option>
+              <option>Maria Oliveira</option>
+              <option>João Santos</option>
+              <option>Ana Ferreira</option>
+              <option>Carlos Lima</option>
+              <option>Beatriz Costa</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="residencia-res">Residência</label>
+            <select id="residencia-res">
+              <option value="">Selecione uma residência...</option>
+              <option>Pousada das Marés</option>
+              <option>Casa da Praia</option>
+              <option>Recanto Atlântico</option>
+              <option>Villa Maraú</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="quarto-res">Quarto</label>
+            <select id="quarto-res">
+              <option value="">Selecione um quarto disponível...</option>
+              <option>Quarto 01 – Solteiro</option>
+              <option>Quarto 03 – Solteiro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="entrada-res">Data e horário de entrada</label>
+            <input type="datetime-local" id="entrada-res" />
+          </div>
+
+          <div class="form-group">
+            <label for="saida-res">Data e horário de saída</label>
+            <input type="datetime-local" id="saida-res" />
+          </div>
+
+          <div class="form-group">
+            <label>Observações</label>
+            <input type="text" placeholder="Alguma observação para a reserva..." />
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-ghost">Cancelar</button>
+          <button class="btn btn-primary">Confirmar Reserva</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Reservas Agendadas</h2>
+          <div style="display:flex;gap:8px;">
+            <select class="btn btn-ghost btn-sm" style="padding:6px 12px;">
+              <option>Todas</option>
+              <option>Ativas</option>
+              <option>Futuras</option>
+              <option>Concluídas</option>
+            </select>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Residência</th>
+              <th>Quarto</th>
+              <th>Check-in</th>
+              <th>Check-out</th>
+              <th>Diárias</th>
+              <th>Status</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Beatriz Costa</td>
+              <td>Pousada das Marés</td>
+              <td>Q01 – Solteiro</td>
+              <td>20/04/2025 12h</td>
+              <td>24/04/2025 12h</td>
+              <td>4</td>
+              <td><span class="badge badge-gray">Reservado</span></td>
+              <td>
+                <a href="alugel.html" class="btn btn-primary btn-sm">Converter em aluguel</a>
+              </td>
+            </tr>
+            <tr>
+              <td>Rafael Souza</td>
+              <td>Casa da Praia</td>
+              <td>Q02 – Casal</td>
+              <td>22/04/2025 12h</td>
+              <td>25/04/2025 12h</td>
+              <td>3</td>
+              <td><span class="badge badge-gray">Reservado</span></td>
+              <td>
+                <a href="alugel.html" class="btn btn-primary btn-sm">Converter em aluguel</a>
+              </td>
+            </tr>
+            <tr>
+              <td>Ana Ferreira</td>
+              <td>Recanto Atlântico</td>
+              <td>Q03 – Casal</td>
+              <td>16/04/2025 12h</td>
+              <td>20/04/2025 12h</td>
+              <td>4</td>
+              <td><span class="badge badge-green">Ativo</span></td>
+              <td>
+                <button class="btn btn-ghost btn-sm">Ver recibo</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

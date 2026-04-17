@@ -227,3 +227,49 @@ body {
 }
 
 
+
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--mar);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--mar-claro); }
+
+.btn-coral {
+  background: var(--coral);
+  color: #fff;
+}
+.btn-coral:hover { background: var(--coral-claro); }
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--mar);
+  color: var(--mar);
+}
+.btn-outline:hover { background: var(--mar); color: #fff; }
+
+.btn-ghost {
+  background: var(--areia-escura);
+  color: var(--texto-leve);
+}
+.btn-ghost:hover { background: #d4c4aa; }
+
+.btn-sm { padding: 6px 14px; font-size: 13px; }
+.btn-lg { padding: 14px 28px; font-size: 16px; }
+
+

@@ -1,0 +1,33 @@
+/* ============================================================
+   COMMIT 1 — style: add design tokens and base reset
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --areia: #f5ede0;
+  --areia-escura: #e8d5bb;
+  --mar: #1a6b7c;
+  --mar-claro: #2a8fa5;
+  --coral: #c0553a;
+  --coral-claro: #e07055;
+  --verde: #2d5a3d;
+  --verde-claro: #3d7a55;
+  --texto: #1e2d2f;
+  --texto-leve: #5a6e70;
+  --branco: #fdfaf6;
+  --sombra: 0 4px 20px rgba(26,107,124,0.12);
+  --sombra-forte: 0 8px 40px rgba(26,107,124,0.2);
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--areia);
+  color: var(--texto);
+  min-height: 100vh;
+}
+

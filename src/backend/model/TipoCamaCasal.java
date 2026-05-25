@@ -1,9 +1,5 @@
 package com.hospedagem.model;
 
-/**
- * Tipo de cama disponível no quarto de casal.
- * Cada tipo tem um adicional de conforto diferente.
- */
 public enum TipoCamaCasal {
     CASAL(0.0),
     QUEEN(40.0),

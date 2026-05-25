@@ -4,10 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * Classe abstrata base para todos os tipos de quarto.
- * Atributos comuns: id, valorBase, possuiAR, possuiHidro
- */
 @Getter
 @Setter
 @Entity
@@ -33,16 +29,10 @@ public abstract class Quarto {
     @JoinColumn(name = "residencia_id")
     private Residencia residencia;
 
-    /** Taxa adicional por ar condicionado */
     public static final double ADICIONAL_AR = 30.0;
 
-    /** Taxa adicional por hidromassagem */
     public static final double ADICIONAL_HIDRO = 50.0;
 
-    /**
-     * Calcula o valor da diária considerando o tipo e os adicionais de AR e Hidro.
-     * Cada subclasse implementa sua própria regra de cálculo do valor base.
-     */
     public double calcularDiaria() {
         double valor = calcularValorBase();
         if (possuiAR) valor += ADICIONAL_AR;
@@ -50,9 +40,5 @@ public abstract class Quarto {
         return valor;
     }
 
-    /**
-     * Cálculo do valor base específico por tipo de quarto.
-     * Sobrescrito pelas subclasses.
-     */
     protected abstract double calcularValorBase();
 }

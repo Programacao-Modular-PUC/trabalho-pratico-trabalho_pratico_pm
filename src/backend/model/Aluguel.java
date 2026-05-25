@@ -41,11 +41,9 @@ public class Aluguel {
     @Column(name = "valor_final")
     private double valorFinal;
 
-    /** Apenas para QuartoDuplo: indica se o cliente solicitou berço */
     @Column(name = "solicitou_berco")
     private boolean solicitouBerco = false;
 
-    /** Apenas para QuartoFamilia: número de hóspedes */
     @Column(name = "num_hospedes")
     private int numHospedes = 1;
 
@@ -56,21 +54,12 @@ public class Aluguel {
     @JoinColumn(name = "pagamento_id")
     private Pagamento pagamento;
 
-    /**
-     * Regras de cálculo de diárias:
-     * - Diárias sempre iniciam às 12h.
-     * - Entrada após 12h → conta como diária completa.
-     * - Saída após 12h → adiciona nova diária.
-     */
     public int calcularDiarias() {
         LocalDateTime checkIn = dataEntrada;
         LocalDateTime checkOut = dataSaida;
 
-        // Base: dias entre as datas
         long dias = ChronoUnit.DAYS.between(checkIn.toLocalDate(), checkOut.toLocalDate());
 
-        // Entrada após 12h → conta como diária completa (já está na contagem natural)
-        // Saída após 12h → adiciona mais uma diária
         if (checkOut.getHour() > 12 || (checkOut.getHour() == 12 && checkOut.getMinute() > 0)) {
             dias += 1;
         }
@@ -78,9 +67,6 @@ public class Aluguel {
         return (int) Math.max(1, dias);
     }
 
-    /**
-     * Calcula o valor final do aluguel conforme o tipo do quarto.
-     */
     public double calcularValorFinal() {
         this.qtdDiarias = calcularDiarias();
 
@@ -97,9 +83,6 @@ public class Aluguel {
         return this.valorFinal;
     }
 
-    /**
-     * Gera o pagamento associado ao aluguel.
-     */
     public Pagamento gerarPagamento() {
         calcularValorFinal();
         Pagamento p = new Pagamento();
@@ -110,9 +93,6 @@ public class Aluguel {
         return p;
     }
 
-    /**
-     * Emite o formulário de aluguel conforme formato exigido.
-     */
     public String emitirFormulario() {
         return String.format("""
                 ===== FORMULÁRIO DE ALUGUEL =====

@@ -1,5 +1,7 @@
 package com.hospedagem.model;
 
+import com.hospedagem.exception.DataInvalidaException;
+import com.hospedagem.exception.RecursoNaoPermitidoException;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -50,9 +52,27 @@ public class Aluguel {
     @Column(name = "reserva_futura")
     private boolean reservaFutura = false;
 
+    @Column(name = "cancelado")
+    private boolean cancelado = false;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pagamento_id")
     private Pagamento pagamento;
+
+    public void validarDatas() {
+        if (dataEntrada == null || dataSaida == null) {
+            throw new DataInvalidaException("As datas de entrada e saída são obrigatórias.");
+        }
+        if (!dataSaida.isAfter(dataEntrada)) {
+            throw new DataInvalidaException("A data de saída deve ser posterior à data de entrada.");
+        }
+    }
+
+    public void validarBerco() {
+        if (solicitouBerco && (quarto == null || !quarto.permiteBerco())) {
+            throw new RecursoNaoPermitidoException("Berço não é permitido para o tipo de quarto selecionado.");
+        }
+    }
 
     public int calcularDiarias() {
         LocalDateTime checkIn = dataEntrada;
@@ -68,6 +88,9 @@ public class Aluguel {
     }
 
     public double calcularValorFinal() {
+        validarDatas();
+        validarBerco();
+
         this.qtdDiarias = calcularDiarias();
 
         double valorDiaria;

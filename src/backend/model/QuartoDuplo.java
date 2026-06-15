@@ -21,6 +21,11 @@ public class QuartoDuplo extends Quarto {
         return getValorBase() + tipoCama.getAdicionalConforto();
     }
 
+    @Override
+    public boolean permiteBerco() {
+        return true;
+    }
+
     public double calcularDiariaComBerco(boolean solicitouBerco) {
         double valor = calcularDiaria();
         if (solicitouBerco) valor += TAXA_BERCO;

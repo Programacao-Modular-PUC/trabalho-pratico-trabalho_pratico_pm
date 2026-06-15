@@ -1,6 +1,8 @@
 package com.hospedagem.controller;
 
+import com.hospedagem.model.Aluguel;
 import com.hospedagem.model.Cliente;
+import com.hospedagem.service.AluguelService;
 import com.hospedagem.service.ClienteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,9 +15,11 @@ import java.util.List;
 public class ClienteController {
 
     private final ClienteService service;
+    private final AluguelService aluguelService;
 
-    public ClienteController(ClienteService service) {
+    public ClienteController(ClienteService service, AluguelService aluguelService) {
         this.service = service;
+        this.aluguelService = aluguelService;
     }
 
     @GetMapping
@@ -31,6 +35,11 @@ public class ClienteController {
     @GetMapping("/cpf/{cpf}")
     public ResponseEntity<Cliente> buscarPorCpf(@PathVariable String cpf) {
         return ResponseEntity.ok(service.buscarPorCpf(cpf));
+    }
+
+    @GetMapping("/{id}/historico")
+    public List<Aluguel> historico(@PathVariable Long id) {
+        return aluguelService.historicoPorCliente(id);
     }
 
     @PostMapping

@@ -1,5 +1,7 @@
 package com.hospedagem.service;
 
+import com.hospedagem.exception.EntidadeNaoEncontradaException;
+import com.hospedagem.exception.QuartoIndisponivelException;
 import com.hospedagem.model.*;
 import com.hospedagem.repository.AluguelRepository;
 import com.hospedagem.repository.QuartoRepository;
@@ -32,16 +34,23 @@ public class AluguelService {
 
     public Aluguel buscarPorId(Long id) {
         return aluguelRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Aluguel não encontrado: " + id));
+                .orElseThrow(() -> new EntidadeNaoEncontradaException("Aluguel não encontrado: " + id));
     }
 
     public List<Aluguel> historicoPorResidencia(Long residenciaId) {
         return aluguelRepository.findByResidenciaId(residenciaId);
     }
 
+    public List<Aluguel> historicoPorCliente(Long clienteId) {
+        clienteService.buscarPorId(clienteId);
+        return aluguelRepository.findByClienteId(clienteId);
+    }
+
     @Transactional
     public Aluguel realizarAluguel(Aluguel aluguel) {
-        // Valida disponibilidade do quarto
+        aluguel.validarDatas();
+        aluguel.validarBerco();
+
         boolean disponivel = quartoRepository.isDisponivel(
                 aluguel.getQuarto().getId(),
                 aluguel.getDataEntrada(),
@@ -49,19 +58,23 @@ public class AluguelService {
         );
 
         if (!disponivel) {
-            throw new RuntimeException("Quarto indisponível no período solicitado.");
+            throw new QuartoIndisponivelException("Quarto indisponível no período solicitado.");
         }
 
-        // Sinaliza se é reserva futura
         aluguel.setReservaFutura(aluguel.isReservaFutura());
 
-        // Calcula diárias e valor final
         aluguel.calcularValorFinal();
 
-        // Gera pagamento
         aluguel.gerarPagamento();
 
         return aluguelRepository.save(aluguel);
+    }
+
+    @Transactional
+    public void cancelarAluguel(Long id) {
+        Aluguel aluguel = buscarPorId(id);
+        aluguel.setCancelado(true);
+        aluguelRepository.save(aluguel);
     }
 
     public String emitirFormulario(Long aluguelId) {

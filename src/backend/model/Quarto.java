@@ -41,4 +41,8 @@ public abstract class Quarto {
     }
 
     protected abstract double calcularValorBase();
+
+    public boolean permiteBerco() {
+        return false;
+    }
 }

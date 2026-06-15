@@ -33,6 +33,12 @@ public class AluguelController {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.realizarAluguel(aluguel));
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> cancelar(@PathVariable Long id) {
+        service.cancelarAluguel(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @GetMapping("/{id}/formulario")
     public ResponseEntity<String> emitirFormulario(@PathVariable Long id) {
         return ResponseEntity.ok(service.emitirFormulario(id));

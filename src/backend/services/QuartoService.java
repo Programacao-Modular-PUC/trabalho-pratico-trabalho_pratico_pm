@@ -29,8 +29,8 @@ public class QuartoService {
     }
 
     public List<Quarto> listarPorTipo(String tipo) {
-        Class<? extends Quarto> classeTipo = resolverTipo(tipo);
-        return quartoRepository.findByTipo(classeTipo);
+        TipoQuarto tipoQuarto = TipoQuarto.fromString(tipo);
+        return quartoRepository.findByTipo(tipoQuarto.getClasse());
     }
 
     public Quarto buscarPorId(Long id) {
@@ -53,14 +53,5 @@ public class QuartoService {
     public boolean verificarDisponibilidade(Long quartoId, LocalDateTime entrada, LocalDateTime saida) {
         buscarPorId(quartoId);
         return quartoRepository.isDisponivel(quartoId, entrada, saida);
-    }
-
-    private Class<? extends Quarto> resolverTipo(String tipo) {
-        return switch (tipo.trim().toUpperCase()) {
-            case "INDIVIDUAL" -> QuartoIndividual.class;
-            case "DUPLO" -> QuartoDuplo.class;
-            case "FAMILIA" -> QuartoFamilia.class;
-            default -> throw new IllegalArgumentException("Tipo de quarto inválido: " + tipo);
-        };
     }
 }

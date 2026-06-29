@@ -35,6 +35,11 @@ public class QuartoController {
         return service.listarPorResidencia(residenciaId);
     }
 
+    @GetMapping("/tipo/{tipo}")
+    public List<Quarto> listarPorTipo(@PathVariable String tipo) {
+        return service.listarPorTipo(tipo);
+    }
+
     @PostMapping("/residencia/{residenciaId}")
     public ResponseEntity<Quarto> criar(@PathVariable Long residenciaId, @RequestBody Quarto quarto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.salvar(residenciaId, quarto));

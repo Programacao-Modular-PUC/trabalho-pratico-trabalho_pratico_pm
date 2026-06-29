@@ -1,5 +1,6 @@
 package com.hospedagem.model;
 
+import com.hospedagem.exception.CapacidadeExcedidaException;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -44,9 +45,14 @@ public class QuartoFamilia extends Quarto {
     }
 
     public double calcularDiariaPorHospedes(int numHospedes) {
-        if (numHospedes < 1) throw new IllegalArgumentException("Número de hóspedes deve ser >= 1");
-        if (numHospedes > getCapacidadeMaxima())
-            throw new IllegalArgumentException("Número de hóspedes excede a capacidade máxima do quarto");
+        if (numHospedes < 1) {
+            throw new IllegalArgumentException("Número de hóspedes deve ser >= 1");
+        }
+        if (numHospedes > getCapacidadeMaxima()) {
+            throw new CapacidadeExcedidaException(
+                    "Número de hóspedes (" + numHospedes + ") excede a capacidade máxima do quarto ("
+                            + getCapacidadeMaxima() + ")");
+        }
 
         double valorComHospedes = getValorBase() * (1 + PERCENTUAL_POR_HOSPEDE * numHospedes);
 

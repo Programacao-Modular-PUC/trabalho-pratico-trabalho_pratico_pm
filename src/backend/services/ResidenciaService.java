@@ -1,5 +1,6 @@
 package com.hospedagem.service;
 
+import com.hospedagem.exception.EntidadeNaoEncontradaException;
 import com.hospedagem.model.Residencia;
 import com.hospedagem.repository.ResidenciaRepository;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class ResidenciaService {
 
     public Residencia buscarPorId(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Residência não encontrada: " + id));
+                .orElseThrow(() -> new EntidadeNaoEncontradaException("Residência não encontrada: " + id));
     }
 
     public Residencia salvar(Residencia residencia) {
@@ -40,6 +41,7 @@ public class ResidenciaService {
     }
 
     public void deletar(Long id) {
+        buscarPorId(id);
         repository.deleteById(id);
     }
 }

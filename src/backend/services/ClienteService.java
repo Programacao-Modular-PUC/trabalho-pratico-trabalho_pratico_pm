@@ -1,5 +1,6 @@
 package com.hospedagem.service;
 
+import com.hospedagem.exception.EntidadeNaoEncontradaException;
 import com.hospedagem.model.Cliente;
 import com.hospedagem.repository.ClienteRepository;
 import org.springframework.stereotype.Service;
@@ -21,12 +22,12 @@ public class ClienteService {
 
     public Cliente buscarPorId(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado: " + id));
+                .orElseThrow(() -> new EntidadeNaoEncontradaException("Cliente não encontrado: " + id));
     }
 
     public Cliente buscarPorCpf(String cpf) {
         return repository.findByCpf(cpf)
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado com CPF: " + cpf));
+                .orElseThrow(() -> new EntidadeNaoEncontradaException("Cliente não encontrado com CPF: " + cpf));
     }
 
     public Cliente salvar(Cliente cliente) {
@@ -43,6 +44,7 @@ public class ClienteService {
     }
 
     public void deletar(Long id) {
+        buscarPorId(id);
         repository.deleteById(id);
     }
 }

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aluguéis — Hospedagem Maraú</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="page-wrapper">
+
+  <div class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo-mark">Hospedagem<br/>Maraú</div>
+      <div class="logo-sub">Gestão de Hospedagem</div>
+    </div>
+    <ul class="sidebar-nav">
+      <li><a href="index.html">                   <span class="icon">🏠</span> Dashboard</a></li>
+      <li><a href="residencias.html">             <span class="icon">🏡</span> Residências</a></li>
+      <li><a href="clientes.html">                <span class="icon">👥</span> Clientes</a></li>
+      <li><a href="reservas.html">                <span class="icon">📅</span> Reservas</a></li>
+      <li><a href="alugel.html" class="active">   <span class="icon">🔑</span> Aluguéis</a></li>
+      <li><a href="cadastro.html">                <span class="icon">➕</span> Novo Cadastro</a></li>
+    </ul>
+    <div class="sidebar-footer">PUC Minas · Prog. Modular</div>
+  </div>
+
+  <div class="main-content">
+    <div class="topbar">
+      <span class="topbar-title">Aluguéis</span>
+      <div class="topbar-user">
+        <span>Admin</span>
+        <div class="avatar">A</div>
+      </div>
+    </div>
+
+    <div class="page-body">
+
+      <div class="page-header">
+        <h1>Registrar Aluguel</h1>
+        <p>Registre a entrada de um hóspede e emita o formulário de aluguel</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 1fr 480px; gap: 24px; align-items: start;">
+
+        <div>
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">🔑 Dados do Aluguel</h2>
+            </div>
+
+            <div class="info-box">
+              As diárias sempre iniciam às 12h. Entrada após 12h conta como diária completa. Saída após 12h adiciona nova diária.
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="cliente-alg">Cliente</label>
+          <select id="cliente-alg">
+              <option value="">Selecione um cliente...</option>
+          </select>
+              </div>
+
+              <div class="form-group">
+                <label for="residencia-alg">Residência</label>
+                  <select id="residencia-alg">
+              <option value="">Selecione uma residência...</option>
+          </select>
+              </div>
+
+              <div class="form-group">
+                <label for="quarto-alg">Quarto</label>
+           <select id="quarto-alg">
+            <option value="">Selecione um quarto...</option>
+        </select>
+              </div>
+
+              <div class="form-group" style="grid-column: 1 / -1;">
+                <p style="font-size:13px;color:var(--texto-leve);font-weight:500;margin-bottom:8px;">Adicionais do quarto</p>
+                <div style="display:flex;gap:20px;">
+                  <label class="checkbox-row">
+                    <input id="algAr" type="checkbox" disabled> ❄️ Ar-condicionado
+                  </label>
+                  <label class="checkbox-row">
+                    <input id="algHidro" type="checkbox" disabled> 🛁 Hidromassagem
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="entrada-alg">Data e horário de entrada</label>
+                <input type="datetime-local" id="entrada-alg" />
+              </div>
+
+              <div class="form-group">
+                <label for="saida-alg">Data e horário de saída</label>
+                <input type="datetime-local" id="saida-alg" />
+              </div>
+            </div>
+
+            <div class="form-actions">
+<button id="btnLimparAluguel" type="button" class="btn btn-ghost">Limpar</button>          <button
+              id="btnRegistrarAluguel"
+              type="button"
+              class="btn btn-primary">
+
+              Registrar Aluguel
+
+          </button>       
+             </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Histórico de Aluguéis</h2>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Cliente</th>
+                  <th>Residência / Quarto</th>
+                  <th>Entrada</th>
+                  <th>Saída</th>
+                  <th>Diárias</th>
+                  <th>Total</th>
+                  <th>Recibo</th>
+                </tr>
+              </thead>
+      <tbody id="historicoAlugueis">
+      </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <div class="recibo">
+            <div class="recibo-header">
+              <h2>Hospedagem Maraú</h2>
+              <p>Formulário de Aluguel · Recibo</p>
+            </div>
+            <div class="recibo-body">
+              <div class="recibo-row">
+                <span class="label">Cliente</span>
+        <span id="recCliente" class="value">-</span>        
+            </div>
+
+              <div class="recibo-row">
+                <span class="label">CPF</span>
+                <span id="recCpf" class="value">-</span>       
+                     </div>
+
+              <div class="recibo-row">
+                <span class="label">Residência</span>
+<span id="recResidencia" class="value">-</span>              </div>
+
+              <div class="recibo-row">
+                <span class="label">Quarto</span>
+<span id="recQuarto" class="value">-</span>              </div>
+              <div class="recibo-row">
+                <span class="label">Data e horário de entrada</span>
+<span id="recEntrada" class="value">-</span>              </div>
+              <div class="recibo-row">
+                <span class="label">Data e horário de saída</span>
+<span id="recSaida" class="value">-</span>              </div>
+              <div class="recibo-row">
+                <span class="label">Número de diárias</span>
+<span id="recDiarias" class="value">-</span>              </div>
+              <div class="recibo-row">
+                <span class="label">Valor base (R$ 120,00 × 3)</span>
+<span id="recValor" class="value">-</span>              </div>
+              <div class="recibo-row">
+                <span class="label">Ar-condicionado (R$ 30,00 × 3)</span>
+      <span id="recAr" class="value">-</span>
+              </div>
+              <div class="recibo-row">
+                <span class="label">Hidromassagem (não incluída)</span>
+  <span id="recHidro" class="value">-</span>
+              </div>
+              <div class="recibo-total">
+                <span class="label">Total a pagar</span>
+<span id="recTotal" class="value">-</span>              </div>
+
+              <div class="recibo-actions">
+          <button
+          id="btnImprimir"
+          class="btn btn-primary">
+          🖨️ Imprimir Recibo
+          </button>           
+                  
+          <button
+          id="btnPdf"
+          class="btn btn-ghost">
+
+          📄 Exportar PDF
+
+          </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<script type="module" src="/components/alugueis.js"></script>
+</body>
+</html>

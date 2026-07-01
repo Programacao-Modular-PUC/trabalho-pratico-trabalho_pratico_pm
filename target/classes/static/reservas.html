@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservas - Hospedagem Marau</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="page-wrapper">
+
+  <div class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo-mark">Hospedagem<br/>Marau</div>
+      <div class="logo-sub">Gestao de Hospedagem</div>
+    </div>
+    <ul class="sidebar-nav">
+      <li><a href="index.html"><span class="icon">🏠</span> Dashboard</a></li>
+      <li><a href="residencias.html"><span class="icon">🏡</span> Residencias</a></li>
+      <li><a href="clientes.html"><span class="icon">👥</span> Clientes</a></li>
+      <li><a href="reservas.html" class="active"><span class="icon">📅</span> Reservas</a></li>
+      <li><a href="alugel.html"><span class="icon">🔑</span> Alugueis</a></li>
+      <li><a href="cadastro.html"><span class="icon">➕</span> Novo Cadastro</a></li>
+    </ul>
+    <div class="sidebar-footer">PUC Minas - Prog. Modular</div>
+  </div>
+
+  <div class="main-content">
+    <div class="topbar">
+      <span class="topbar-title">Reservas</span>
+      <div class="topbar-user">
+        <span>Admin</span>
+        <div class="avatar">A</div>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <div class="page-header">
+        <h1>Reservas</h1>
+        <p>Cadastre reservas futuras, verifique disponibilidade e acompanhe o historico.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">📅 Nova Reserva</h2>
+        </div>
+
+        <div class="info-box">
+          As diarias sempre iniciam as 12h. Entrada apos 12h conta como diaria completa. Saida apos 12h adiciona nova diaria.
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="cliente-res">Cliente</label>
+            <select id="cliente-res">
+              <option value="">Carregando clientes...</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="residencia-res">Residencia</label>
+            <select id="residencia-res">
+              <option value="">Carregando residencias...</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="quarto-res">Quarto</label>
+            <select id="quarto-res">
+              <option value="">Selecione uma residencia...</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="entrada-res">Data e horario de entrada</label>
+            <input type="datetime-local" id="entrada-res" />
+          </div>
+
+          <div class="form-group">
+            <label for="saida-res">Data e horario de saida</label>
+            <input type="datetime-local" id="saida-res" />
+          </div>
+
+          <div class="form-group">
+            <label for="hospedes-res">Hospedes</label>
+            <input type="number" id="hospedes-res" min="1" value="1" />
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button id="btnLimparReserva" class="btn btn-ghost" type="button">Limpar</button>
+          <button id="btnConfirmarReserva" class="btn btn-primary" type="button">Confirmar Reserva</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">🗓️ Reservas Agendadas</h2>
+          <button id="btnAtualizarReservas" class="btn btn-ghost btn-sm" type="button">Atualizar</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Residencia</th>
+              <th>Quarto</th>
+              <th>Check-in</th>
+              <th>Check-out</th>
+              <th>Diarias</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Acao</th>
+            </tr>
+          </thead>
+          <tbody id="reservasTabela">
+            <tr>
+              <td colspan="9">Carregando reservas...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script type="module" src="/components/reservas.js"></script>
+</body>
+</html>

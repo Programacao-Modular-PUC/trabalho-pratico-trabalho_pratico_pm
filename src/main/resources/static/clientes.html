@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clientes — Hospedagem Maraú</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="page-wrapper">
+
+  <div class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo-mark">Hospedagem<br/>Maraú</div>
+      <div class="logo-sub">Gestão de Hospedagem</div>
+    </div>
+    <ul class="sidebar-nav">
+      <li><a href="index.html">                     <span class="icon">🏠</span> Dashboard</a></li>
+      <li><a href="residencias.html">               <span class="icon">🏡</span> Residências</a></li>
+      <li><a href="clientes.html" class="active">   <span class="icon">👥</span> Clientes</a></li>
+      <li><a href="reservas.html">                  <span class="icon">📅</span> Reservas</a></li>
+      <li><a href="alugel.html">                    <span class="icon">🔑</span> Aluguéis</a></li>
+      <li><a href="cadastro.html">                  <span class="icon">➕</span> Novo Cadastro</a></li>
+    </ul>
+    <div class="sidebar-footer">PUC Minas · Prog. Modular</div>
+  </div>
+
+  <div class="main-content">
+    <div class="topbar">
+      <span class="topbar-title">Clientes</span>
+      <div class="topbar-user">
+        <span>Admin</span>
+        <div class="avatar">A</div>
+      </div>
+    </div>
+
+    <div class="page-body">
+
+      <div class="page-header">
+        <h1>Clientes Cadastrados</h1>
+        <p>Gerencie os hóspedes do sistema</p>
+      </div>
+
+      <div class="search-bar">
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Buscar por nome, CPF ou e-mail..." />
+        </div>
+        <a href="cadastro.html" class="btn btn-primary">+ Novo Cliente</a>
+      </div>
+
+      <div class="card">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>CPF</th>
+              <th>Telefone</th>
+              <th>E-mail</th>
+              <th>Endereço</th>
+              <th>Hospedagens</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+      <tbody id="tabelaClientes">
+      </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script type="module" src="/components/clientes.js"></script>
+</body>
+</html>

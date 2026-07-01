@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Hospedagem Marau</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="page-wrapper">
+  
+
+  <div class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo-mark">Hospedagem<br/>Marau</div>
+      <div class="logo-sub">Gestao de Hospedagem</div>
+    </div>
+    <ul class="sidebar-nav">
+      <li><a href="index.html" class="active"><span class="icon">🏠</span> Dashboard</a></li>
+      <li><a href="residencias.html"><span class="icon">🏡</span> Residencias</a></li>
+      <li><a href="clientes.html"><span class="icon">👥</span> Clientes</a></li>
+      <li><a href="reservas.html"><span class="icon">📅</span> Reservas</a></li>
+      <li><a href="alugel.html"><span class="icon">🔑</span> Alugueis</a></li>
+      <li><a href="cadastro.html"><span class="icon">➕</span> Novo Cadastro</a></li>
+    </ul>
+    <div class="sidebar-footer">PUC Minas - Prog. Modular</div>
+  </div>
+
+  <div class="main-content">
+    <div class="topbar">
+      <span class="topbar-title">Dashboard</span>
+      <div class="topbar-user">
+        <span>Bem-vindo, Admin</span>
+        <div class="avatar">A</div>
+      </div>
+    </div>
+
+    <div class="page-body">
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-icon">🏡</span>
+          <span id="totalResidencias" class="stat-value">0</span>
+          <span class="stat-label">Residencias cadastradas</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">🛏️</span>
+          <span id="totalQuartos" class="stat-value">0</span>
+          <span class="stat-label">Quartos disponiveis</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">📅</span>
+          <span id="totalReservas" class="stat-value">0</span>
+          <span class="stat-label">Reservas ativas</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon">👥</span>
+          <span id="totalClientes" class="stat-value">0</span>
+          <span class="stat-label">Clientes cadastrados</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">🔑 Alugueis Recentes</h2>
+          <a href="alugel.html" class="btn btn-outline btn-sm">Ver todos</a>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Residencia</th>
+              <th>Quarto</th>
+              <th>Entrada</th>
+              <th>Saida</th>
+              <th>Diarias</th>
+              <th>Total</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="dashboardAlugueis">
+            <tr>
+              <td colspan="8">Carregando alugueis...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">📅 Proximas Reservas</h2>
+          <a href="reservas.html" class="btn btn-outline btn-sm">Ver agenda</a>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Residencia / Quarto</th>
+              <th>Check-in</th>
+              <th>Check-out</th>
+              <th>Acao</th>
+            </tr>
+          </thead>
+          <tbody id="dashboardReservas">
+            <tr>
+              <td colspan="5">Carregando reservas...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script type="module" src="/components/dashboard.js"></script>
+</body>
+</html>

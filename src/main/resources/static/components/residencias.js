@@ -90,7 +90,7 @@ function renderizarQuartos(quartos = []) {
                 <div>
                     <div class="quarto-numero">Quarto ${index + 1}</div>
                     <div class="quarto-tipo">${valorSeguro(quarto.tipo_quarto ?? quarto.tipoQuarto)}</div>
-                    <div style="font-size:14px;font-weight:600;color:var(--mar);margin-top:4px;">
+                    <div style="font-size:14px;font-weight:600;color:white;margin-top:4px;">
                         ${moeda(quarto.valorBase)}
                     </div>
                 </div>

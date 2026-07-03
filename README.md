@@ -39,7 +39,7 @@
 
 Clone o repositório e entre na pasta:
 ```bash
-git clone <url-do-repositorio>
+git clone <https://github.com/Programacao-Modular-PUC/trabalho-pratico-trabalho_pratico_pm.git>
 cd trabalho-pratico-trabalho_pratico_pm-main
 ```
 

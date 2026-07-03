@@ -10,6 +10,10 @@
 ## 📺 Video pela visão do admin
 [▶️ Assistir demonstração do projeto](./docs/0701(1).mp4)
 
+ou
+
+[▶️ Assistir pelo youtube](https://youtu.be/grjfk9qi1jI)
+
 ---
 
 ## ⚙️ Tecnologias Utilizadas
